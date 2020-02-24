@@ -1,4 +1,4 @@
-'use stirict';
+'use strict';
 
 function $() {
   
