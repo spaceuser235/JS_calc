@@ -2,7 +2,7 @@
 
 function $() {
   
-  let x = prompt( 'Что делаем?(+, -, *, /, **, ***, round, ceil)', '' );
+  let x = prompt( 'Что делаем?(см. действия)', '' );
   let bool = (x == '+' || x == '-' || x == '*' || x == '/' || x == '**' || x == '***' ||  x == 'round' || x == 'ceil' || x == 'floor' );
   let only1NumReq = ( x == 'round' || x == 'ceil' || x == 'floor' );
   if( x === null ) return;
