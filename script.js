@@ -1,72 +1,89 @@
-'use strict';
+'use stirict';
 
 function $() {
   
-  let x = prompt( 'Что делаем?(+, -, *, /, **, ***)', '' );
-  let bool = (x == '+' || x == '-' || x == '*' || x == '/' || x == '**' || x == '***' );
+  let x = prompt( 'Что делаем?(+, -, *, /, **, ***, round, ceil)', '' );
+  let bool = (x == '+' || x == '-' || x == '*' || x == '/' || x == '**' || x == '***' ||  x == 'round' || x == 'ceil' || x == 'floor' );
+  let only1NumReq = ( x == 'round' || x == 'ceil' || x == 'floor' );
   if( x === null ) return;
   else if ( !bool ) {
     alert( 'Ошибка' );
 	return;
   };
   
-  let num = {
-    one: prompt( 'Введите первое число', '' ),
-  };
-  if( num.one === null ) return;
-  else if( !(+num.one) && +num.one !== 0 ) {
+  let num1Str = ( !only1NumReq ) ? 'первое ' : '';
+  
+  let a = prompt( `Введите ${num1Str}число`, '' );
+  if( a === null ) return;
+  else if( !(+a) && +a !== 0 ) {
     alert( 'Ошибка' );
 	return;
   };
    
-  num.two = prompt( 'Введите второе число', '' );
-  if( num.two === null ) return;
-  else if( !(+num.two) && +num.two !== 0 ) {
-	alert( 'Ошибка' );
-	return;
+  if( !only1NumReq ) {
+	let b = prompt( 'Введите второе число', '' );
+    if( b === null ) return;
+    else if( !(+b) && +b !== 0 ) {
+	  alert( 'Ошибка' );
+	  return;
+   };
   };
   
   let result;
   
-  num.one = +num.one;
-  num.two = +num.two;
+  a = +a;
+  if( !only1NumReq ) b = +b;
   
   switch( x ) {
     case '+':
-	  result = num.one + num.two;
+	  result = a + b;
 	  break;
     case '-':
-	  result = num.one - num.two;
+	  result = a - b;
 	  break;
 	case '*':
-	  result = num.one * num.two;
+	  result = a * b;
 	  break;
 	case '/':
-	  result = num.one / num.two;
+	  result = a / b;
 	  break;
 	case '**':
-	  result = num.one ** num.two;
+	  result = a ** b;
 	  break;
 	case '***':
-	  result = powPlus( num.one, num.two )
+	  result = calc.powPlus( a, b );
+	case 'round':
+	  result = Math.round( a );
+	  break;
+	case 'ceil':
+	  result = Math.ceil( a );
+	  break;
+	case 'floor':
+	  result = Math.floor( a );
+	  break;
   };
    
   let message = ( result == Infinity ) ? 'Результат infinity':
   ( result == -Infinity ) ? 'Результат -infinity':
+  ( x == '***' && result === undefined ) ? false:
   `Результат ${result}`;
-  alert( message );
+  if( message ) {
+	alert( message );
+  };
   
-  function powPlus( num1, num2 ) {
-	if( !(+num1) || !(+num2) ) return;
-	let result = num1;
-	if( num2 < 1 ) {
-	  alert( `Ошибка! ${num2}-я степень ${num1} не поддерживается!` );
-	  return;
-	};
-	for(let i = 1; i < num2; i++) {
-	  result = num1 ** result;
-	};
-	return result;
+  let calc = {
+    powPlus( a, b ) {
+	  if( !(+a) && +b !== 0 || !(+b) && +b !== 0 ) return;
+	  let result = a;
+	  if( num2 < 1 ) {
+	    alert( `Ошибка! ${b}-я сверхстепень ${a} не поддерживается!` );
+	    return;
+	  };
+	  for(let i = 1; i < num2; i++) {
+	    result = num1 ** result;
+	  };
+	  return result;
+    },
   };
   
 };
