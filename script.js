@@ -2,7 +2,7 @@
 
 function $() {
   
-  let x = prompt( 'Что делаем?(см. действия)', '' );
+  let x = prompt( 'Что делаем?(+, -, *, /, **, ***, round, ceil)', '' );
   let bool = (x == '+' || x == '-' || x == '*' || x == '/' || x == '**' || x == '***' ||  x == 'round' || x == 'ceil' || x == 'floor' );
   let only1NumReq = ( x == 'round' || x == 'ceil' || x == 'floor' );
   if( x === null ) return;
@@ -20,8 +20,9 @@ function $() {
 	return;
   };
    
+  let b;
   if( !only1NumReq ) {
-	let b = prompt( 'Введите второе число', '' );
+	b = prompt( 'Введите второе число', '' );
     if( b === null ) return;
     else if( !(+b) && +b !== 0 ) {
 	  alert( 'Ошибка' );
