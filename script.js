@@ -76,12 +76,12 @@ function $() {
     powPlus( a, b ) {
 	  if( !(+a) && +b !== 0 || !(+b) && +b !== 0 ) return;
 	  let result = a;
-	  if( num2 < 1 ) {
+	  if( b < 1 ) {
 	    alert( `Ошибка! ${b}-я сверхстепень ${a} не поддерживается!` );
 	    return;
 	  };
-	  for(let i = 1; i < num2; i++) {
-	    result = num1 ** result;
+	  for(let i = 1; i < b; i++) {
+	    result = a ** result;
 	  };
 	  return result;
     },
