@@ -199,5 +199,5 @@ function valueIn(value, valueIn) {
     if(value === valueX) return true;
   };
   
-  return false;
+  return 0;
 };
